@@ -11,6 +11,7 @@ namespace Garage2.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+           // AutomaticMigrationDataLossAllowed = false;
             ContextKey = "Garage2.Models.Garage2Context";
         }
 

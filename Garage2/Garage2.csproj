@@ -125,14 +125,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201601181124556_NewInit.cs" />
-    <Compile Include="Migrations\201601181124556_NewInit.Designer.cs">
-      <DependentUpon>201601181124556_NewInit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601281432117_InitialCreate.cs" />
-    <Compile Include="Migrations\201601281432117_InitialCreate.Designer.cs">
-      <DependentUpon>201601281432117_InitialCreate.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Garage.cs" />
     <Compile Include="Models\Garage2Context.cs" />
@@ -179,16 +171,16 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Vehicles2\Create.cshtml" />
-    <Content Include="Views\Vehicles2\Delete.cshtml" />
-    <Content Include="Views\Vehicles2\Details.cshtml" />
-    <Content Include="Views\Vehicles2\Edit.cshtml" />
-    <Content Include="Views\Vehicles2\Index.cshtml" />
     <Content Include="Views\Members\Create.cshtml" />
     <Content Include="Views\Members\Delete.cshtml" />
     <Content Include="Views\Members\Details.cshtml" />
     <Content Include="Views\Members\Edit.cshtml" />
     <Content Include="Views\Members\Index.cshtml" />
+    <Content Include="Views\Vehicles2\Create.cshtml" />
+    <Content Include="Views\Vehicles2\Delete.cshtml" />
+    <Content Include="Views\Vehicles2\Details.cshtml" />
+    <Content Include="Views\Vehicles2\Edit.cshtml" />
+    <Content Include="Views\Vehicles2\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -200,14 +192,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201601181124556_NewInit.resx">
-      <DependentUpon>201601181124556_NewInit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601281432117_InitialCreate.resx">
-      <DependentUpon>201601281432117_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

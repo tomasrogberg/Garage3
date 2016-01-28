@@ -49,8 +49,9 @@ namespace Garage2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,MemberId,VTypeId,RegNr,Brand,ProdName,Color,Wheels,CheckInTime,ParkNr")] Vehicle vehicle)
+        public ActionResult Create([Bind(Include = "Id,DriverName,MemberId,VTypeId,RegNr,Brand,ProdName,Color,Wheels,CheckInTime,ParkNr")] Vehicle vehicle)
         {
+            
             if (ModelState.IsValid)
             {
                 db.Vehicles.Add(vehicle);
@@ -85,7 +86,7 @@ namespace Garage2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,MemberId,VTypeId,RegNr,Brand,ProdName,Color,Wheels,CheckInTime,ParkNr")] Vehicle vehicle)
+        public ActionResult Edit([Bind(Include = "Id,DriverName,MemberId,VTypeId,RegNr,Brand,ProdName,Color,Wheels,CheckInTime,ParkNr")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {
