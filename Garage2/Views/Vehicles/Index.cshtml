@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Garage2.Models.Vehicle>
+
+@{
+    ViewBag.Title = "Garage";
+}
+
+<h2>The Garage</h2>
+
+<p>
+    @Html.ActionLink("Checkin to Garage", "Create")<br />
+
+    @using (Html.BeginForm())
+    {
+    <p>
+        Find by RegNr: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+    }
+
+
+<table class="table">
+    <tr>
+        <th>
+           @Html.ActionLink("Type", "Index", new { sortOrder = ViewBag.TypeSortParm, searchString=ViewBag.SearchString })
+        </th>
+        <th>
+            @Html.ActionLink("RegNr", "Index", new { sortOrder = ViewBag.RegNrSortParm, searchString = ViewBag.SearchString })
+        </th>
+        <th>
+            @Html.ActionLink("Brand", "Index", new { sortOrder = ViewBag.BrandSortParm, searchString = ViewBag.SearchString })
+        </th>
+      
+        <th>
+            @Html.ActionLink("CheckinTime", "Index", new { sortOrder = ViewBag.CheckinTimeSortParm, searchString = ViewBag.SearchString })
+        </th>
+        <th>
+            @Html.ActionLink("ParkingTime", "Index", new { sortOrder = ViewBag.ParkingTimeSortParm, searchString = ViewBag.SearchString })
+        </th>
+        <th>
+            @Html.ActionLink("SlotNo", "Index", new { sortOrder = ViewBag.SlotNoSortParm, searchString = ViewBag.SearchString })
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegNr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Brand)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckInTime)
+        </td>
+        <td>
+            @{
+           
+                TimeSpan? ParkingTime = new TimeSpan();
+
+                ParkingTime = DateTime.Now - item.CheckInTime;
+                double totH = ParkingTime.Value.TotalHours;
+                int totHours = Convert.ToInt32(Math.Truncate(totH));                
+
+                var result = string.Format("{0:D2}:{1:D2}",  totHours, ParkingTime.Value.Minutes);
+                     
+            }
+
+            @Html.DisplayFor(modelItem => result )
+          
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParkNr)
+        </td>
+        <td>
+            @*@Html.ActionLink("Search", "Edit", new { id = item.Id }) |*@
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Checkout", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>

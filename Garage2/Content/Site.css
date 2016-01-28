@@ -1,0 +1,85 @@
+﻿* {
+    padding: 0px;
+    margin: 0px;
+}
+body {
+    padding-left: 0px;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+table{
+ font-size: 20px;
+}
+/* Views*/
+.form-group{
+    padding: 10px 0px;
+    font-size: 20px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+
+.dl-horizontal dt {
+    padding: 12px 0px;
+    font-size: 20px;
+}
+
+.dl-horizontal dd {
+    padding: 15px 0px 0px 30px;
+    font-size: 20px;
+    border: 3px solid #7facaa;
+    margin-bottom: 10px;
+
+}
+
+h1{
+    padding: 50px 0px 20px 0px;
+    display: block;
+    font-size: 160px;
+    font-weight: bold;
+}
+h2 {
+    padding: 60px 0px 10px 0px;
+    display: block;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+}
+h3{
+    padding: 5px 0px 0px 0px;
+    display: block;
+    font-size: 30px;
+    font-weight: bold;
+}
+h4{
+    padding: 5px 80px;
+    display: block;
+    font-size: 25px;
+    font-weight: bold;
+}
+li{
+    padding: 20px 0px 20px;
+    display: block;
+    font-size: 40px;
+    font-weight: bold;
+    justify-content:space-between; 
+
+}
+
+p {
+    font-size: 25px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
