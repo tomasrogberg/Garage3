@@ -1,22 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
- 
+
 namespace Garage2.Models
 {
     public enum VType { Car, MC, Boat, Plane, SpaceShip }
-    
+
     public class Vehicle
     {
-        
+
         public int Id { get; set; }
 
         [Required]
-        public VType Type { get; set; }
+        public int MemberId { get; set; }
+        public virtual Member Member { get; set; }
 
-        [StringLength(10,MinimumLength=4)]
+        [Required]
+        //public VType Type { get; set; }
+        [ForeignKey("VType")]
+        public int VTypeId { get; set; }
+        public virtual VehicleType VType { get; set; }
+
+        [StringLength(10, MinimumLength = 4)]
         [Required]
         public string RegNr { get; set; }
 
@@ -26,11 +34,11 @@ namespace Garage2.Models
         [Required]
         public string Color { get; set; }
 
-        [Range (0,9999)]
+        [Range(0, 9999)]
         public int Wheels { get; set; }
         public DateTime? CheckInTime { get; set; }
- //       public int ParkSpace { get; set; }
-    
+        //       public int ParkSpace { get; set; }
+
         public int ParkNr { get; set; }
 
     }
