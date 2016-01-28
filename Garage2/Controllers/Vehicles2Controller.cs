@@ -10,17 +10,18 @@ using Garage2.Models;
 
 namespace Garage2.Controllers
 {
-    public class Vehicles25Controller : Controller
+    public class Vehicles2Controller : Controller
     {
         private Garage2Context db = new Garage2Context();
 
-        // GET: Vehicles25
+        // GET: Vehicles2
         public ActionResult Index()
         {
-            return View(db.Vehicles.ToList());
+            var vehicles = db.Vehicles.Include(v => v.Member).Include(v => v.Type);
+            return View(vehicles.ToList());
         }
 
-        // GET: Vehicles25/Details/5
+        // GET: Vehicles2/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,18 +36,20 @@ namespace Garage2.Controllers
             return View(vehicle);
         }
 
-        // GET: Vehicles25/Create
+        // GET: Vehicles2/Create
         public ActionResult Create()
         {
+            ViewBag.MemberId = new SelectList(db.Members, "Id", "Name");
+            ViewBag.VTypeId = new SelectList(db.VehicleTypes, "Id", "Type");
             return View();
         }
 
-        // POST: Vehicles25/Create
+        // POST: Vehicles2/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Type,RegNr,Brand,ProdName,Color,Wheels,CheckInTime,ParkNr")] Vehicle vehicle)
+        public ActionResult Create([Bind(Include = "Id,MemberId,VTypeId,RegNr,Brand,ProdName,Color,Wheels,CheckInTime,ParkNr")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {
@@ -55,10 +58,12 @@ namespace Garage2.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.MemberId = new SelectList(db.Members, "Id", "Name", vehicle.MemberId);
+            ViewBag.VTypeId = new SelectList(db.VehicleTypes, "Id", "Type", vehicle.VTypeId);
             return View(vehicle);
         }
 
-        // GET: Vehicles25/Edit/5
+        // GET: Vehicles2/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -70,15 +75,17 @@ namespace Garage2.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.MemberId = new SelectList(db.Members, "Id", "Name", vehicle.MemberId);
+            ViewBag.VTypeId = new SelectList(db.VehicleTypes, "Id", "Type", vehicle.VTypeId);
             return View(vehicle);
         }
 
-        // POST: Vehicles25/Edit/5
+        // POST: Vehicles2/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Type,RegNr,Brand,ProdName,Color,Wheels,CheckInTime,ParkNr")] Vehicle vehicle)
+        public ActionResult Edit([Bind(Include = "Id,MemberId,VTypeId,RegNr,Brand,ProdName,Color,Wheels,CheckInTime,ParkNr")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {
@@ -86,10 +93,12 @@ namespace Garage2.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.MemberId = new SelectList(db.Members, "Id", "Name", vehicle.MemberId);
+            ViewBag.VTypeId = new SelectList(db.VehicleTypes, "Id", "Type", vehicle.VTypeId);
             return View(vehicle);
         }
 
-        // GET: Vehicles25/Delete/5
+        // GET: Vehicles2/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +113,7 @@ namespace Garage2.Controllers
             return View(vehicle);
         }
 
-        // POST: Vehicles25/Delete/5
+        // POST: Vehicles2/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -15,14 +15,15 @@ namespace Garage2.Models
         public int Id { get; set; }
 
         [Required]
+        [ForeignKey("Member")]
         public int MemberId { get; set; }
         public virtual Member Member { get; set; }
 
         [Required]
         //public VType Type { get; set; }
-        [ForeignKey("VType")]
+        [ForeignKey("Type")]
         public int VTypeId { get; set; }
-        public virtual VehicleType VType { get; set; }
+        public virtual VehicleType Type { get; set; }
 
         [StringLength(10, MinimumLength = 4)]
         [Required]

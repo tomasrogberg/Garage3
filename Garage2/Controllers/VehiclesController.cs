@@ -147,7 +147,7 @@ namespace Garage2.Controllers
             if (ModelState.IsValid)
             {
                 vehicle.CheckInTime = DateTime.Now;
-                vehicle.ParkNr = AddToFirstEmptySpace(vehicle.Type); // fixa parkeringsnummer
+              //  vehicle.ParkNr = AddToFirstEmptySpace(vehicle.Type); // fixa parkeringsnummer
                 db.Vehicles.Add(vehicle);
                 db.SaveChanges();
 
