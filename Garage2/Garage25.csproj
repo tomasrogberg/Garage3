@@ -181,6 +181,11 @@
     <Content Include="Views\Vehicles2\Details.cshtml" />
     <Content Include="Views\Vehicles2\Edit.cshtml" />
     <Content Include="Views\Vehicles2\Index.cshtml" />
+    <Content Include="Views\Vehicles2bk2901\Create.cshtml" />
+    <Content Include="Views\Vehicles2bk2901\Delete.cshtml" />
+    <Content Include="Views\Vehicles2bk2901\Details.cshtml" />
+    <Content Include="Views\Vehicles2bk2901\Edit.cshtml" />
+    <Content Include="Views\Vehicles2bk2901\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
