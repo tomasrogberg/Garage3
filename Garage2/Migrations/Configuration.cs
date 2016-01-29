@@ -18,12 +18,12 @@ namespace Garage2.Migrations
         protected override void Seed(Garage2.Models.Garage2Context context)
         {
 
-            //context.VehicleTypes.AddOrUpdate(v => v.Type, new VehicleType { Id = 0, Type = "Car" },
-            //                                           new VehicleType { Type = "Bus" },
-            //                                           new VehicleType { Type = "Boat" },
-            //                                           new VehicleType { Type = "MC" },
-            //                                           new VehicleType { Type = "Airplane" },
-            //                                           new VehicleType { Type = "Spaceship" });
+            context.VehicleTypes.AddOrUpdate(v => v.Type, new VehicleType { Id = 0, Type = "Car" },
+                                                       new VehicleType { Type = "Bus" },
+                                                       new VehicleType { Type = "Boat" },
+                                                       new VehicleType { Type = "MC" },
+                                                       new VehicleType { Type = "Airplane" },
+                                                       new VehicleType { Type = "Spaceship" });
 
 
             //  This method will be called after migrating to the latest version.

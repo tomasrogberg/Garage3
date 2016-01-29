@@ -49,16 +49,30 @@ namespace Garage2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,MemberId,VTypeId,RegNr,Brand,ProdName,Color,Wheels,CheckInTime,ParkNr")] Vehicle vehicle)
+        //        public ActionResult Create([Bind(Include = "Id,MemberId,VTypeId,RegNr,Brand,ProdName,Color,Wheels,CheckInTime,ParkNr")] Vehicle vehicle)
+        public ActionResult Create([Bind(Include = "Id,Driver,VTypeId,RegNr,Brand,ProdName,Color,Wheels")] Vehicle vehicle)
         {
-            
-            if (ModelState.IsValid)
+            string Driver = vehicle.Driver;
+            var me = from v in db.Members
+                     where v.Name == Driver
+                     select v;
+            if (me.Count() != 0)
             {
-                db.Vehicles.Add(vehicle);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                Member mem = me.First();
+                if (mem != null)
+                {
+                    vehicle.MemberId = mem.Id;
+                    if (ModelState.IsValid)
+                    {
+                        db.Vehicles.Add(vehicle);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                }
+            } else
+            {
+                return RedirectToAction("Index", "Members");
             }
-
             ViewBag.MemberId = new SelectList(db.Members, "Id", "Name", vehicle.MemberId);
             ViewBag.VTypeId = new SelectList(db.VehicleTypes, "Id", "Type", vehicle.VTypeId);
             return View(vehicle);
