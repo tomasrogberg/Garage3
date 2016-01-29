@@ -56,7 +56,7 @@ namespace Garage2.Controllers
             var me = from v in db.Members
                      where v.Name == Driver
                      select v;
-            if (me.Count() != 0)
+           if (me.Count() != 0)
             {
                 Member mem = me.First();
                 if (mem != null)
@@ -69,7 +69,7 @@ namespace Garage2.Controllers
                         return RedirectToAction("Index");
                     }
                 }
-            } else
+           } else
             {
                 return RedirectToAction("Index", "Members");
             }
