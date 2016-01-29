@@ -14,6 +14,7 @@ namespace Garage2.Models
 
         public int Id { get; set; }
 
+         [Required]
         public string Driver { get; set; }
 
         [ForeignKey("Member")]
