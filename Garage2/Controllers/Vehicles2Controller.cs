@@ -14,18 +14,9 @@ namespace Garage2.Controllers
     {
         private Garage2Context db = new Garage2Context();
 
-        // GET: Vehicles2
-        //public ActionResult Index()
-        //{
-        //    var vehicles = db.Vehicles.Include(v => v.Member).Include(v => v.Type);
-        //    return View(vehicles.ToList());
-        //}
-
-
         public ActionResult Index(string searchString, string sortOrder, string searchType)
         {
 
-            //ViewBag.TypeSortParm = sortOrder == "type_desc" ? "type_asc" : "type_desc";
             ViewBag.RegNrSortParm = sortOrder == "regnr_desc" ? "regnr_asc" : "regnr_desc";
             ViewBag.BrandSortParm = sortOrder == "brand_desc" ? "brand_asc" : "brand_desc";
             ViewBag.CheckinTimeSortParm = sortOrder == "checkintime_desc" ? "checkintime_asc" : "checkintime_desc";
@@ -34,7 +25,6 @@ namespace Garage2.Controllers
             ViewBag.SearchString = searchString;
             ViewBag.SearchType = searchType;
 
-            //var vehicle = db.Vehicles.Include(v => v.Member).Include(v => v.Type);
             var vehicle = from v in db.Vehicles.Include(v => v.Member).Include(v => v.Type)
                           select v;
 
@@ -45,7 +35,7 @@ namespace Garage2.Controllers
 
             if (!String.IsNullOrEmpty(searchType))
             {
-                vehicle = vehicle.Where(s => s.Type.ToString().Contains(searchType));
+                vehicle = vehicle.Where(s => s.Type.Type.Contains(searchType));
             }
 
             switch (sortOrder)
@@ -56,12 +46,12 @@ namespace Garage2.Controllers
                 case "regnr_asc":
                     vehicle = vehicle.OrderBy(v => v.RegNr);
                     break;
-                //case "type_desc":
-                //    vehicle = vehicle.OrderByDescending(v => v.Type);
-                //    break;
-                //case "type_asc":
-                //    vehicle = vehicle.OrderBy(v => v.Type);
-                //    break;
+                case "type_desc":
+                    vehicle = vehicle.OrderByDescending(v => v.Type);
+                    break;
+                case "type_asc":
+                    vehicle = vehicle.OrderBy(v => v.Type);
+                    break;
                 case "brand_desc":
                     vehicle = vehicle.OrderByDescending(v => v.Brand);
                     break;

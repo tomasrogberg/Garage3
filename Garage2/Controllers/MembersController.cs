@@ -15,9 +15,17 @@ namespace Garage2.Controllers
         private Garage2Context db = new Garage2Context();
 
         // GET: Members
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.Members.ToList());
+            var member = from m in db.Members
+                         select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                member = member.Where(s => s.Name.Contains(searchString));
+            }
+            List<Member> memberList = member.ToList();
+            return View(memberList);
         }
 
         // GET: Members/Details/5

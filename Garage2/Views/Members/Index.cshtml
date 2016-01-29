@@ -8,7 +8,15 @@
 
 <p>
     @Html.ActionLink("Be a member !", "Create")
-</p>
+
+    @using (Html.BeginForm())
+    {
+    <p>
+        Find by Name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+    }
+
 <table class="table">
     <tr>
         <th>
