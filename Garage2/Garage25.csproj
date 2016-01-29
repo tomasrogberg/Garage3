@@ -186,6 +186,7 @@
     <Content Include="Views\Vehicles2bk2901\Details.cshtml" />
     <Content Include="Views\Vehicles2bk2901\Edit.cshtml" />
     <Content Include="Views\Vehicles2bk2901\Index.cshtml" />
+    <Content Include="Views\Vehicles2\Receipt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

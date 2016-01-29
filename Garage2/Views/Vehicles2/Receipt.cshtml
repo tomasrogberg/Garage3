@@ -1,20 +1,18 @@
-﻿@model Garage2.Models.Vehicle
+﻿
+@model Garage2.Models.Vehicle
 
 @{
-    ViewBag.Title = "CheckOut";
+    ViewBag.Title = "Receipt";
 }
 
-<h2>Check out Vehicle</h2>
-<p>
-    Time is:
-    @DateTime.Now;
+@*@DateTime CheckOutTime= new DateTime();*@
+<h2>Details</h2>
 
-</p>
-
-<h3>Are you sure you want CheckOut this vehicle?</h3>
 <div>
+    <h4>Receipt</h4>
     <hr />
     <dl class="dl-horizontal">
+ 
         <dt>
             @Html.DisplayNameFor(model => model.Member.Name)
         </dt>
@@ -30,7 +28,8 @@
         <dd>
             @Html.DisplayFor(model => model.Type.Type)
         </dd>
-       <dt>
+
+        <dt>
             @Html.DisplayNameFor(model => model.RegNr)
         </dt>
 
@@ -55,40 +54,37 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Color)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Color)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Wheels)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Wheels)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.CheckInTime)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.CheckInTime)
         </dd>
+        <dt>
+            CheckOutTime
+        </dt>
+        <dd>
+            @ViewBag.CheckOutTime
+        </dd>
+
+        <dt>
+            ParkingTime
+        </dt>
+        <dd>
+            @ViewBag.ParkingTime
+        </dd>
+        <dt>
+            Payment
+        </dt>
+        <dd>
+            <p>
+                @ViewBag.Payment
+                Kronor. Price/hour is 60 kr.
+            </p>
+
+        </dd>
 
     </dl>
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        <div class="form-actions no-color">
-            <input type="submit" value="Check Out" class="btn btn-default" />
-        </div>
-    }
 </div>
 <p>
-    @Html.ActionLink("Back to Garage", "Index")
+    @Html.ActionLink("Back to List", "Index")
 </p>
-
