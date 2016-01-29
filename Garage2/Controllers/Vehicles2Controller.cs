@@ -22,7 +22,7 @@ namespace Garage2.Controllers
         //}
 
 
-        public ActionResult Index(string searchString, string sortOrder)
+        public ActionResult Index(string searchString, string sortOrder, string searchType)
         {
 
             //ViewBag.TypeSortParm = sortOrder == "type_desc" ? "type_asc" : "type_desc";
@@ -32,6 +32,7 @@ namespace Garage2.Controllers
             ViewBag.ParkingTimeSortParm = sortOrder == "parkingtime_desc" ? "parkingtime_asc" : "parkingtime_desc";
             ViewBag.SlotNoSortParm = sortOrder == "slotno_desc" ? "slotno_asc" : "slotno_desc";
             ViewBag.SearchString = searchString;
+            ViewBag.SearchType = searchType;
 
             //var vehicle = db.Vehicles.Include(v => v.Member).Include(v => v.Type);
             var vehicle = from v in db.Vehicles.Include(v => v.Member).Include(v => v.Type)
@@ -40,6 +41,11 @@ namespace Garage2.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 vehicle = vehicle.Where(s => s.RegNr.Contains(searchString));
+            }
+
+            if (!String.IsNullOrEmpty(searchType))
+            {
+                vehicle = vehicle.Where(s => s.Type.ToString().Contains(searchType));
             }
 
             switch (sortOrder)
