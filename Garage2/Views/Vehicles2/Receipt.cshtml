@@ -13,21 +13,35 @@
     <hr />
     <dl class="dl-horizontal">
  
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Member.Name)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Member.Name)
-        </dd>
+        </dd>*@
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Member.Name)
+        </dt>
+        <dd>
+            @ViewBag.MemberName
+            
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Type.Type)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Type.Type)
+            @ViewBag.VehType
         </dd>
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Type.Type)
+        </dt>*@
+
+        @*<dd>
+            @Html.DisplayFor(model => model.Type.Type)
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.RegNr)
